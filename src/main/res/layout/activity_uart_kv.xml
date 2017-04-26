@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="10dip"
+    android:paddingLeft="10dip"
+    android:paddingTop="10dip">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="10dip"
+        android:background="@color/message_background"
+        android:textSize="16dp"
+        android:text="" />
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingBottom="10dip"
+            android:paddingLeft="10dip"
+            android:paddingTop="10dip">
+
+            <!--
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:text="@string/kv_string_send_label"/>
+
+                        <EditText
+                            android:id="@+id/kv_string_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLength="19"
+                            android:layout_marginBottom="10dp"
+                            android:text=""/>
+
+                        <Button
+                            android:id="@+id/kv_sendStringBut"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/kv_send_btn"
+                            android:onClick="onSendString"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:text="@string/kv_string_rcvd_label"/>
+                        <TextView
+                            android:id="@+id/kv_string_recvd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="24dp"
+                            android:layout_marginBottom="20dp"
+                            android:text="Nothing yet"/>
+            -->
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Key"
+                                android:id="@+id/textView3" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/kv_send_key_text" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Value"
+                                android:id="@+id/textView2" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/kv_send_value_text" />
+                        </LinearLayout>
+
+
+                        <Button
+                            android:id="@+id/buttonKV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Send Key Value Pair"
+                            android:onClick="onSendKeyValue" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:text="Key from Microbit:"/>
+                        <TextView
+                            android:id="@+id/kv_key_recvd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="24dp"
+                            android:layout_marginBottom="20dp"
+                            android:text="Nothing yet"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:text="Value from Microbit:"/>
+                        <TextView
+                            android:id="@+id/kv_value_recvd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="24dp"
+                            android:layout_marginBottom="20dp"
+                            android:text="Nothing yet"/>
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
