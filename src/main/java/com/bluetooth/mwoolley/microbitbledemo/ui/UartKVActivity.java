@@ -166,7 +166,7 @@ public class UartKVActivity extends AppCompatActivity implements ConnectionStatu
                     service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
                     characteristic_uuid = bundle.getString(BleAdapterService.PARCEL_CHARACTERISTIC_UUID);
                     b = bundle.getByteArray(BleAdapterService.PARCEL_VALUE);
-                    Log.d(Constants.TAG, "Value=" + Utility.byteArrayAsHexString(b));
+                   // Log.d(Constants.TAG, "Value=" + Utility.byteArrayAsHexString(b));
                     if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.UART_TX_CHARACTERISTIC_UUID)))) {
                         String ascii="";
                         Log.d(Constants.TAG, "UART TX received");
@@ -198,8 +198,11 @@ public class UartKVActivity extends AppCompatActivity implements ConnectionStatu
             public void run() {
              //   ((TextView) UartKVActivity.this.findViewById(R.id.kv_string_recvd)).setText(mesg);
                 // split mesg assuming all is goo for now
-                String clean = mesg.substring(1,mesg.length()-1);
-                String[] kvArr = clean.split("^");
+                Log.d(Constants.TAG, "received mesg=" + mesg);
+                String clean = mesg.substring(0,mesg.length()-1);  // remove last char (should test that it's #)
+                Log.d(Constants.TAG, "received clean=" + clean);
+                //String[] kvArr = clean.split("^");
+                String[] kvArr = clean.split("\\Q^\\E");  // figured this out when working on appinventor code - stupid ^
                 if (kvArr.length == 2) {
                     ((TextView) UartKVActivity.this.findViewById(R.id.kv_key_recvd)).setText(kvArr[0]);
                     ((TextView) UartKVActivity.this.findViewById(R.id.kv_value_recvd)).setText(kvArr[1]);
@@ -230,11 +233,11 @@ public class UartKVActivity extends AppCompatActivity implements ConnectionStatu
         Log.d(Constants.TAG, "onSendKeyValue");
         EditText key = (EditText) UartKVActivity.this.findViewById(R.id.kv_send_key_text);
         EditText value = (EditText) UartKVActivity.this.findViewById(R.id.kv_send_value_text);
-        Log.d(Constants.TAG, "onSendString: " + key.getText().toString()+":"+value.getText().toString());
+        Log.d(Constants.TAG, "onSendString: " + key.getText().toString()+"^"+value.getText().toString()+"#");
         try {  // can't use delimiter of ':' because part of JSON, so need something else -
             // I set in pxt.io "bluetooth uart read" block and main.cpp onConnected(MicroBitEvent)
             // is this going to screw up other apps?
-            String simpleJson = key.getText().toString()+"^"+value.getText().toString()+"|";  // delimiter used by UART service to know end of message on uBit
+            String simpleJson = key.getText().toString()+"^"+value.getText().toString()+"#";  // delimiter used by UART service to know end of message on uBit
             byte[] ascii_bytes = simpleJson.getBytes("US-ASCII");
             Log.d(Constants.TAG, "ASCII bytes: 0x" + Utility.byteArrayAsHexString(ascii_bytes));
             bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService.UARTSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.UART_RX_CHARACTERISTIC_UUID), ascii_bytes);

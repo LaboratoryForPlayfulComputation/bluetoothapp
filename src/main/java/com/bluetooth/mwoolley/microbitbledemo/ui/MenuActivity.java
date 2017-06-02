@@ -82,12 +82,16 @@ public class MenuActivity extends AppCompatActivity implements ConnectionStatusL
 
         // read intent data
         final Intent intent = getIntent();
+        Log.d(Constants.TAG, "MenuActivity onCreate"+intent.getStringExtra(EXTRA_NAME));
         MicroBit.getInstance().setMicrobit_name(intent.getStringExtra(EXTRA_NAME));
+        Log.d(Constants.TAG, "MenuActivity onCreate"+intent.getStringExtra(EXTRA_ID));
         MicroBit.getInstance().setMicrobit_address(intent.getStringExtra(EXTRA_ID));
+        Log.d(Constants.TAG, "MenuActivity onCreate setConnection_status_listener");
         MicroBit.getInstance().setConnection_status_listener(this);
-
+        Log.d(Constants.TAG, "MenuActivity onCreate gattServiceIntent");
         // connect to the Bluetooth service
         Intent gattServiceIntent = new Intent(this, BleAdapterService.class);
+        Log.d(Constants.TAG, "MenuActivity onCreate bindService");
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
     }
 

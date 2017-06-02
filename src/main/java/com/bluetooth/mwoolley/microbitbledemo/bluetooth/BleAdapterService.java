@@ -157,7 +157,7 @@ public class BleAdapterService extends Service implements Runnable{
     public static String HEARTRATE_SERVICE_16_BIT_UUID = "180D";
     public static String HEARTRATEMEASUREMENT_CHARACTERISTIC_UUID = "00002a3700001000800000805F9B34FB";
 
-    public static String UARTSERVICE_SERVICE_UUID =    "6E400001B5A3F393E0A9E50E23CA9E";
+    public static String UARTSERVICE_SERVICE_UUID =    "6E400001B5A3F393E0A9E50E24DCCA9E";
     public static String UART_TX_CHARACTERISTIC_UUID = "6E400002B5A3F393E0A9E50E24DCCA9E";  // Kari says these are backwards
     public static String UART_RX_CHARACTERISTIC_UUID = "6E400003B5A3F393E0A9E50E24DCCA9E";  //based on nRF connect
 
